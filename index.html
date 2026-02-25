@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RITHISHA · AI web developer</title>
+    <!-- Orbitron font for the hi-text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background-color: #050b14;
+        /* Hexagon Pattern using CSS Gradients */
+        background-image: radial-gradient(
+            circle at center,
+            rgba(0, 255, 204, 0.05) 0%,
+            transparent 70%
+          ),
+          linear-gradient(
+            30deg,
+            #050b14 12%,
+            transparent 12.5%,
+            transparent 87%,
+            #050b14 87.5%,
+            #050b14
+          ),
+          linear-gradient(
+            -30deg,
+            #050b14 12%,
+            transparent 12.5%,
+            transparent 87%,
+            #050b14 87.5%,
+            #050b14
+          ),
+          linear-gradient(
+            30deg,
+            #050b14 12%,
+            transparent 12.5%,
+            transparent 87%,
+            #050b14 87.5%,
+            #050b14
+          ),
+          linear-gradient(
+            -30deg,
+            #050b14 12%,
+            transparent 12.5%,
+            transparent 87%,
+            #050b14 87.5%,
+            #050b14
+          ),
+          linear-gradient(
+            60deg,
+            #0f172a 25%,
+            transparent 25.5%,
+            transparent 75%,
+            #0f172a 75%,
+            #0f172a
+          ),
+          linear-gradient(
+            60deg,
+            #0f172a 25%,
+            transparent 25.5%,
+            transparent 75%,
+            #0f172a 75%,
+            #0f172a
+          );
+        background-size: 80px 140px;
+        color: #f0f4ff;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, sans-serif;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      /* Optional: Box-a light-ah white glass-ah mathuna innum premium-ah irukkum */
+      .ai-card {
+        background: rgba(255, 255, 255, 0.25) !important;
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #443333;
+      }
+
+      :root {
+        --surface: rgba(18, 22, 35, 0.8);
+        --surface-hover: rgba(28, 34, 50, 0.95);
+        --accent-neon: #2af7ff;
+        --accent-purple: #b77aff;
+        --accent-blue: #3a86ff;
+        --text-primary: #f0f4ff;
+        --text-secondary: #b0bbdb;
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --card-radius: 1.75rem;
+        --glow: 0 0 20px rgba(42, 247, 255, 0.3);
+        --shadow-heavy: 0 25px 50px -8px rgba(0, 0, 0, 0.6);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* ---------- name bar ---------- */
+      .name-bar {
+        background: rgba(8, 10, 18, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(42, 247, 255, 0.15);
+        padding: 1.5rem 2rem;
+        text-align: center;
+        position: relative;
+        z-index: 20;
+      }
+
+      .hi-text {
+        font-family: "Orbitron", sans-serif;
+        background: linear-gradient(to right, #00ffcc, #3388ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: capitalize;
+        line-height: 1.2;
+        display: inline-block;
+      }
+
+      .hi-text strong {
+        font-weight: 800;
+        background: inherit;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      /* ---------- navigation ---------- */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 15;
+        background: rgba(8, 10, 18, 0.7);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--glass-border);
+      }
+
+      .nav {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0.9rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 1.4rem;
+        background: linear-gradient(
+          145deg,
+          var(--accent-neon),
+          var(--accent-purple)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-btn {
+        padding: 0.6rem 1.4rem;
+        border-radius: 40px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(42, 247, 255, 0.15);
+        color: var(--text-secondary);
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 0.95rem;
+        backdrop-filter: blur(4px);
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-btn i {
+        color: var(--accent-neon);
+        font-size: 1rem;
+        transition: transform 0.2s;
+      }
+
+      .nav-btn:hover {
+        background: rgba(42, 247, 255, 0.1);
+        border-color: var(--accent-purple);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--glow);
+      }
+
+      .nav-btn:hover i {
+        transform: scale(1.1);
+        color: var(--accent-purple);
+      }
+
+      /* ---------- main container & animations ---------- */
+      .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 3rem 2rem 5rem;
+      }
+
+      section {
+        margin: 7rem 0;
+        opacity: 0;
+        animation: slideDownReveal 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+      }
+
+      section:nth-of-type(1) {
+        animation-delay: 0.1s;
+      }
+      section:nth-of-type(2) {
+        animation-delay: 0.2s;
+      }
+      section:nth-of-type(3) {
+        animation-delay: 0.3s;
+      }
+      section:nth-of-type(4) {
+        animation-delay: 0.4s;
+      }
+      section:nth-of-type(5) {
+        animation-delay: 0.5s;
+      }
+      section:nth-of-type(6) {
+        animation-delay: 0.6s;
+      }
+      section:nth-of-type(7) {
+        animation-delay: 0.7s;
+      }
+
+      @keyframes slideDownReveal {
+        0% {
+          opacity: 0;
+          transform: translateY(-40px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ---------- HERO SECTION ---------- */
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3rem;
+        flex-wrap: wrap;
+        position: relative;
+        margin: 2rem 0 6rem;
+      }
+
+      .hero-bg-image {
+        position: absolute;
+        top: -20%;
+        right: -10%;
+        width: 70%;
+        height: 140%;
+        background: url("https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1932&auto=format&fit=crop")
+          no-repeat center/cover;
+        opacity: 0.15;
+        mask-image: radial-gradient(circle at 70% 30%, black, transparent 70%);
+        -webkit-mask-image: radial-gradient(
+          circle at 70% 30%,
+          black,
+          transparent 70%
+        );
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .hero-text {
+        flex: 1 1 300px;
+      }
+
+      .hero-text h2 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        background: linear-gradient(to right, #00ffcc, #3a86ff, #b77aff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      .hero-text p {
+        font-size: 1.3rem;
+        color: var(--text-secondary);
+        max-width: 550px;
+      }
+
+      .hero-text p i {
+        color: var(--accent-neon);
+        margin-right: 0.5rem;
+      }
+
+      /* profile image wrapper */
+      .profile-wrapper {
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        padding: 6px;
+        background: linear-gradient(135deg, #00ffcc, #3a86ff, #b77aff);
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.5),
+          0 0 60px rgba(58, 134, 255, 0.4), 0 0 90px rgba(183, 122, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        flex-shrink: 0;
+      }
+
+      .profile-wrapper:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.7),
+          0 0 80px rgba(58, 134, 255, 0.5), 0 0 120px rgba(183, 122, 255, 0.4);
+      }
+
+      .profile-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        image-rendering: auto;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(2px);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* ---------- about / education ---------- */
+      .about-section,
+      .education-section {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        background: var(--surface);
+        border-radius: var(--card-radius);
+        border: 1px solid var(--glass-border);
+        padding: 2.5rem;
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-heavy);
+        transition: transform 0.2s;
+      }
+
+      .about-section:hover,
+      .education-section:hover {
+        transform: scale(1.01);
+        border-color: var(--accent-neon);
+      }
+
+      .about-content,
+      .education-content {
+        flex: 1.2;
+      }
+
+      .about-content h2,
+      .education-content h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(145deg, var(--accent-neon), #fff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+      }
+
+      .about-content p,
+      .education-content p {
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+        line-height: 1.7;
+        white-space: pre-line;
+      }
+
+      .about-image,
+      .education-image {
+        flex: 0.8;
+        display: flex;
+        justify-content: center;
+      }
+
+      .about-image img,
+      .education-image img {
+        width: 100%;
+        max-width: 280px;
+        border-radius: 2rem;
+        border: 2px solid var(--accent-neon);
+        box-shadow: 0 0 30px rgba(42, 247, 255, 0.3);
+        object-fit: cover;
+      }
+
+      .education-section {
+        flex-direction: row-reverse;
+      }
+
+      /* skills grid */
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      .skill-card {
+        background: var(--surface);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--glass-border);
+        border-radius: 60px;
+        padding: 0.9rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        transition: 0.2s;
+        box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
+      }
+
+      .skill-card i {
+        font-size: 1.6rem;
+        color: var(--accent-neon);
+      }
+
+      .skill-card:hover {
+        border-color: var(--accent-purple);
+        transform: scale(1.05);
+        background: var(--surface-hover);
+        box-shadow: 0 0 30px rgba(183, 122, 255, 0.3);
+      }
+
+      /* achievements & certifications */
+      .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+        margin-top: 2rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--card-radius);
+        padding: 2rem 1.5rem;
+        backdrop-filter: blur(10px);
+        transition: all 0.25s ease;
+        box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.6);
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent-neon);
+        box-shadow: 0 30px 40px -15px rgba(42, 247, 255, 0.3);
+      }
+
+      .card-icon {
+        font-size: 2.4rem;
+        color: var(--accent-neon);
+        margin-bottom: 1.5rem;
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .card p,
+      .card li {
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        list-style: none;
+      }
+
+      .card ul {
+        padding-left: 0;
+      }
+
+      .card li i {
+        color: var(--accent-purple);
+        width: 1.5rem;
+      }
+
+      /* ---------- PROJECTS SECTION (with cinematic letter animation) ---------- */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .project-card {
+        background: var(--surface);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--card-radius);
+        padding: 1.8rem;
+        backdrop-filter: blur(10px);
+        transition: transform 0.25s ease, border-color 0.2s;
+        box-shadow: var(--shadow-heavy);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--accent-neon);
+      }
+
+      .project-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 1rem;
+        border: 1px solid var(--accent-neon);
+        margin-bottom: 1.2rem;
+      }
+
+      /* button styling remains, but inner text will be animated with .char spans */
+      .project-title-btn {
+        background: none;
+        border: none;
+        color: var(--accent-neon);
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-align: left;
+        cursor: pointer;
+        padding: 0;
+        margin-bottom: 0.8rem;
+        transition: 0.2s;
+        text-shadow: 0 0 8px var(--accent-neon);
+        line-height: 1.3;
+        /* ensure text wraps naturally */
+        white-space: normal;
+        word-break: break-word;
+      }
+
+      .project-title-btn:hover {
+        text-shadow: 0 0 18px var(--accent-purple);
+        color: var(--accent-purple);
+      }
+
+      /* letter animation styles */
+      .project-title-btn .char {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: letterFadeUp 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+        /* animation-delay set inline via JS */
+      }
+
+      @keyframes letterFadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .project-details {
+        margin-top: 1rem;
+        transition: opacity 0.3s ease;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .tech-tags span {
+        background: rgba(183, 122, 255, 0.1);
+        border: 1px solid var(--accent-purple);
+        border-radius: 40px;
+        padding: 0.4rem 1.2rem;
+        display: inline-block;
+        margin: 0.3rem 0.3rem 0 0;
+        font-size: 0.9rem;
+      }
+
+      /* contact */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .cta {
+        display: inline-block;
+        margin-top: 1.2rem;
+        padding: 0.8rem 2rem;
+        background: linear-gradient(
+          145deg,
+          var(--accent-neon),
+          var(--accent-purple)
+        );
+        border-radius: 40px;
+        color: #0a0c14;
+        font-weight: 700;
+        text-decoration: none;
+        transition: 0.2s;
+        border: none;
+      }
+
+      .cta:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px var(--accent-neon);
+      }
+
+      footer {
+        text-align: center;
+        padding: 2.5rem;
+        color: var(--text-secondary);
+        border-top: 1px solid var(--glass-border);
+        margin-top: 4rem;
+      }
+
+      /* chat assistant */
+      .chat-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+      }
+
+      .chat-button {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(
+          145deg,
+          var(--accent-neon),
+          var(--accent-purple)
+        );
+        border: none;
+        color: #0a0c14;
+        font-size: 2rem;
+        cursor: pointer;
+        box-shadow: 0 0 30px var(--accent-neon);
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .chat-button:hover {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .chat-panel {
+        position: absolute;
+        bottom: 80px;
+        right: 0;
+        width: 320px;
+        background: var(--surface);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: 24px;
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: var(--shadow-heavy);
+      }
+
+      .chat-panel.open {
+        display: flex;
+      }
+
+      .chat-header {
+        padding: 1rem;
+        background: rgba(42, 247, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .chat-messages {
+        height: 250px;
+        overflow-y: auto;
+        padding: 1rem;
+      }
+
+      .message {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        margin-bottom: 0.5rem;
+        max-width: 80%;
+      }
+
+      .bot-message {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--accent-neon);
+        align-self: flex-start;
+      }
+
+      .user-message {
+        background: linear-gradient(
+          145deg,
+          var(--accent-neon),
+          var(--accent-purple)
+        );
+        color: #0a0c14;
+        align-self: flex-end;
+      }
+
+      .chat-input-area {
+        display: flex;
+        padding: 0.8rem;
+        gap: 0.5rem;
+        border-top: 1px solid var(--glass-border);
+      }
+
+      .chat-input-area input {
+        flex: 1;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--glass-border);
+        border-radius: 30px;
+        padding: 0.5rem 1rem;
+        color: white;
+      }
+
+      .chat-input-area button {
+        background: var(--accent-neon);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        color: #0a0c14;
+        cursor: pointer;
+      }
+
+      @media (max-width: 850px) {
+        .hero {
+          flex-direction: column-reverse;
+          text-align: center;
+        }
+        .hero-text p {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .profile-wrapper {
+          width: 260px;
+          height: 260px;
+        }
+        .hi-text {
+          font-size: 2.5rem;
+        }
+        .name-bar {
+          padding: 1rem;
+        }
+        .about-section,
+        .education-section {
+          flex-direction: column !important;
+          text-align: center;
+        }
+        .projects-grid,
+        .cert-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- name bar -->
+    <div class="name-bar">
+      <span class="hi-text">Hi! it's <strong>Rithisha M</strong></span>
+    </div>
+
+    <!-- navigation -->
+    <header>
+      <nav class="nav">
+        <div class="logo">✦ AI Web Developer</div>
+        <div class="nav-links">
+          <a href="#home" class="nav-btn"><i class="fas fa-home"></i> Home</a>
+          <a href="#about" class="nav-btn"><i class="fas fa-user"></i> About</a>
+          <a href="#education" class="nav-btn"
+            ><i class="fas fa-graduation-cap"></i> Education</a
+          >
+          <a href="#skills" class="nav-btn"
+            ><i class="fas fa-code"></i> Skills</a
+          >
+          <a href="#certification" class="nav-btn"
+            ><i class="fas fa-project-diagram"></i> Achievements</a
+          >
+          <a href="#projects" class="nav-btn"
+            ><i class="fas fa-robot"></i> Projects</a
+          >
+          <a href="#contact" class="nav-btn"
+            ><i class="fas fa-envelope"></i> Contact</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <main class="container" id="home">
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <div class="hero-bg-image"></div>
+        <div class="hero-text">
+          <h2>AI Web Developer</h2>
+          <p>
+            <i class="fas fa-brain"></i> generative UI · computer vision · deep
+            learning
+          </p>
+          <p style="font-size: 1.1rem; margin-top: 1.5rem">
+            Building practical software solutions with a passion for real-world
+            impact.
+          </p>
+        </div>
+        <div class="profile-wrapper">
+          <img
+            class="profile-image"
+            src="https://i.postimg.cc/CxsDJ5SP/Pi7-Passport-Photo-(2).jpg"
+            alt="Rithisha profile"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="about-section">
+          <div class="about-content">
+            <h2>Bit about me</h2>
+            <p>
+              Aspiring Software Developer<br /><br />Building practical software
+              solutions and data-driven applications with a passion for
+              continuous learning and real-world impact.<br />I enjoy building
+              simple web applications and working with Python and Java to solve
+              practical problems.
+            </p>
+          </div>
+          <div class="about-image">
+            <img
+              src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1974&auto=format&fit=crop"
+              alt="anime style coding girl"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education">
+        <div class="education-section">
+          <div class="education-content">
+            <h2>education</h2>
+            <p>
+              <strong>B.E. Computer Science Engineering</strong><br />Government
+              College of Engineering, Salem (2023–2027)<br />CGPA: 8.30<br /><br /><strong
+                >Higher Secondary (HSC)</strong
+              ><br />AVMS Matriculation Higher Secondary School (2020–2022)<br />Score:
+              94%
+            </p>
+          </div>
+          <div class="education-image">
+            <img
+              src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070&auto=format&fit=crop"
+              alt="anime style study"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <h2 style="margin-bottom: 1rem">skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card"><i class="fab fa-python"></i> Python</div>
+          <div class="skill-card"><i class="fab fa-java"></i> Java</div>
+          <div class="skill-card"><i class="fab fa-html5"></i> HTML5</div>
+          <div class="skill-card"><i class="fab fa-css3-alt"></i> CSS3</div>
+          <div class="skill-card"><i class="fas fa-database"></i> Hadoop</div>
+          <div class="skill-card">
+            <i class="fas fa-chart-line"></i> MapReduce
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-smile"></i> Sentiment analysis
+          </div>
+          <div class="skill-card"><i class="fas fa-file-excel"></i> Excel</div>
+          <div class="skill-card">
+            <i class="fas fa-brain"></i> Logical thinking
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-puzzle-piece"></i> Problem solving
+          </div>
+          <div class="skill-card"><i class="fas fa-robot"></i> AI design</div>
+        </div>
+      </section>
+
+      <!-- ACHIEVEMENTS & CERTIFICATIONS -->
+      <section id="certification">
+        <h2>achievements & certifications</h2>
+        <div class="cert-grid">
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-trophy"></i></div>
+            <h3>Achievements</h3>
+            <ul>
+              <li><i class="fas fa-medal"></i> International Hackathon 2024</li>
+              <li><i class="fas fa-medal"></i> Smart India Hackathon 2025</li>
+              <li><i class="fas fa-medal"></i> Active technical contributor</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-certificate"></i></div>
+            <h3>Certifications</h3>
+            <ul>
+              <li>
+                <i class="fas fa-check-circle"></i> IBM Data Visualization
+                (Python)
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> IBM Data Analysis (Python)
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> IBM Python 101 for Data
+                Science
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> EEBPL GenAI Internship
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS (with cinematic letter animation) -->
+      <section id="projects">
+        <h2>projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img
+              class="project-image"
+              src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="fruits and vegetables"
+              loading="lazy"
+            />
+            <button class="project-title-btn" id="toggleNutrientBtn">
+              Nutrient Analysis on Fruits & Vegetables using Deep Learning
+            </button>
+            <div class="project-details hidden" id="nutrientDetails">
+              <p>
+                A convolutional neural network trained on 100,000+ images of
+                fruits and vegetables to identify 50+ categories and provide
+                real‑time nutritional facts (calories, vitamins, minerals). The
+                model is deployed via a Flask API and integrates with the
+                Nutritionix database for accurate macro/micro breakdown.
+              </p>
+              <div class="tech-tags">
+                <span>TensorFlow/Keras</span><span>OpenCV</span
+                ><span>Flask</span><span>Python</span
+                ><span>Nutritionix API</span><span>CNN</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img
+              class="project-image"
+              src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1934&auto=format&fit=crop"
+              alt="server cluster"
+              loading="lazy"
+            />
+            <button class="project-title-btn" id="toggleSentimentBtn">
+              Sentiment Analysis using Hadoop
+            </button>
+            <div class="project-details hidden" id="sentimentDetails">
+              <p>
+                Implemented a scalable MapReduce pipeline to perform sentiment
+                analysis on millions of tweets using the Hadoop ecosystem. The
+                system classifies tweets as positive, negative, or neutral using
+                a lexicon‑based approach integrated with Hive, Pig, and Flume
+                for data ingestion.
+              </p>
+              <div class="tech-tags">
+                <span>Hadoop</span><span>MapReduce</span><span>Hive</span
+                ><span>Pig</span><span>Flume</span><span>Python</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <h2>connect</h2>
+        <div class="contact-grid">
+          <div class="card">
+            <h3>
+              <i
+                class="fas fa-paper-plane"
+                style="color: var(--accent-neon)"
+              ></i>
+              Get in touch
+            </h3>
+            <p>
+              <i class="fab fa-linkedin" style="color: var(--accent-neon)"></i>
+              linkedin.com/in/rithisha-m
+            </p>
+            <p>
+              <i class="fas fa-envelope" style="color: var(--accent-neon)"></i>
+              mrithisha17@gmail.com
+            </p>
+            <a href="mailto:mrithisha17@gmail.com" class="cta">email me</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 hi! it's rithisha m — AI web developer · built with neural networks
+      & CSS
+    </footer>
+
+    <!-- chat assistant -->
+    <div class="chat-container">
+      <button class="chat-button" id="chatButton">
+        <i class="fas fa-robot"></i>
+      </button>
+      <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+          <span
+            ><i class="fas fa-robot" style="color: var(--accent-neon)"></i> AI
+            assistant</span
+          ><button
+            class="close-chat"
+            id="closeChat"
+            style="background: none; border: none; color: white"
+          >
+            ✕
+          </button>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input-area">
+          <input type="text" id="userInput" placeholder="ask me..." /><button
+            id="sendMessage"
+          >
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        // ---------- chat functionality (unchanged) ----------
+        const chatBtn = document.getElementById("chatButton");
+        const panel = document.getElementById("chatPanel");
+        const closeBtn = document.getElementById("closeChat");
+        const msgBox = document.getElementById("chatMessages");
+        const input = document.getElementById("userInput");
+        const send = document.getElementById("sendMessage");
+
+        function addMessage(text, sender) {
+          const div = document.createElement("div");
+          div.classList.add(
+            "message",
+            sender === "bot" ? "bot-message" : "user-message"
+          );
+          div.textContent = text;
+          msgBox.appendChild(div);
+          msgBox.scrollTop = msgBox.scrollHeight;
+        }
+
+        function getBotResponse(userText) {
+          const text = userText.toLowerCase().trim();
+          if (
+            text.match(
+              /^(hi|hello|hey|hola|greetings|good morning|good afternoon|good evening)/
+            )
+          )
+            return "👋 Hello! I'm Rithisha's AI assistant. How can I help you today? Feel free to ask about her skills, projects, or achievements!";
+          if (
+            text.includes("your name") ||
+            text.includes("who are you") ||
+            text === "name"
+          )
+            return "Developer name is Rithisha, and I'm her AI assistant. How can I assist you? 😊";
+          if (
+            text.includes("developer name") ||
+            (text.includes("name") && text.includes("developer"))
+          )
+            return "The developer's name is Rithisha. I'm her AI assistant, here to help you explore her portfolio!";
+          if (
+            text.includes("skill") ||
+            text.includes("technologies") ||
+            text.includes("programming")
+          )
+            return "Rithisha is skilled in Python, Java, HTML/CSS, Hadoop, MapReduce, deep learning, and more. You can check the Skills section for the full list!";
+          if (
+            text.includes("project") ||
+            text.includes("nutrient") ||
+            text.includes("fruit") ||
+            text.includes("vegetable") ||
+            text.includes("sentiment") ||
+            text.includes("hadoop")
+          )
+            return 'Rithisha has worked on two main projects: "Nutrient Analysis on Fruits & Vegetables using Deep Learning" and "Sentiment Analysis using Hadoop". Click the project titles in the Projects section to see details!';
+          if (text.includes("achievement") || text.includes("hackathon"))
+            return "Rithisha participated in International Hackathon 2024 and Smart India Hackathon 2025. She's an active technical contributor. More in the Achievements & Certifications section!";
+          if (
+            text.includes("certification") ||
+            text.includes("ibm") ||
+            text.includes("eebpl")
+          )
+            return "She holds IBM certifications in Data Visualization, Data Analysis, Python for Data Science, and completed a Generative AI Internship at EEBPL. Check the Achievements & Certifications section for details.";
+          if (
+            text.includes("contact") ||
+            text.includes("email") ||
+            text.includes("linkedin") ||
+            text.includes("reach")
+          )
+            return "You can reach Rithisha at mrithisha17@gmail.com or connect via LinkedIn: linkedin.com/in/rithisha-m. She'd love to hear from you!";
+          if (
+            text.includes("education") ||
+            text.includes("college") ||
+            text.includes("school") ||
+            text.includes("cgpa") ||
+            text.includes("score")
+          )
+            return "Rithisha is pursuing B.E. Computer Science at Government College of Engineering, Salem (2023–2027) with CGPA 8.30. She completed her HSC with 94%. More in the Education section!";
+          if (text.includes("thank"))
+            return "You're very welcome! 😊 If you have any more questions, feel free to ask.";
+          if (text.includes("bye") || text.includes("goodbye"))
+            return "Goodbye! 👋 It was nice chatting with you. Come back anytime!";
+          return "I'm here to assist with questions about Rithisha's portfolio – her skills, projects, achievements, certifications, education, and contact. For anything else, please reach out directly to her via email. How can I help you with her work?";
+        }
+
+        function processUserInput() {
+          const text = input.value.trim();
+          if (!text) return;
+          addMessage(text, "user");
+          input.value = "";
+          setTimeout(() => addMessage(getBotResponse(text), "bot"), 300);
+        }
+
+        chatBtn.addEventListener("click", () => {
+          panel.classList.toggle("open");
+          if (!msgBox.children.length)
+            addMessage(
+              "👋 Hi! I'm Rithisha's AI assistant. Feel free to ask me about her skills, projects, achievements, or anything portfolio-related. How can I help you today?",
+              "bot"
+            );
+        });
+        closeBtn.addEventListener("click", () =>
+          panel.classList.remove("open")
+        );
+        send.addEventListener("click", processUserInput);
+        input.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") processUserInput();
+        });
+
+        // Toggle project details (original)
+        document
+          .getElementById("toggleNutrientBtn")
+          ?.addEventListener("click", () => {
+            document
+              .getElementById("nutrientDetails")
+              .classList.toggle("hidden");
+          });
+        document
+          .getElementById("toggleSentimentBtn")
+          ?.addEventListener("click", () => {
+            document
+              .getElementById("sentimentDetails")
+              .classList.toggle("hidden");
+          });
+
+        // ---------- CINEMATIC LETTER ANIMATION FOR PROJECT TITLES ----------
+        function animateProjectTitles() {
+          const titles = document.querySelectorAll(".project-title-btn");
+          titles.forEach((btn) => {
+            // avoid double processing
+            if (btn.querySelector(".char")) return;
+            const originalText = btn.innerText;
+            btn.innerHTML = ""; // clear button content
+            const chars = originalText.split("");
+            chars.forEach((ch, index) => {
+              const span = document.createElement("span");
+              span.className = "char";
+              span.style.animationDelay = index * 0.04 + "s"; // 40ms stagger
+              if (ch === " ") {
+                span.innerHTML = "&nbsp;"; // preserve space
+              } else {
+                span.textContent = ch;
+              }
+              btn.appendChild(span);
+            });
+          });
+        }
+
+        // run animation after a tiny delay to ensure DOM is ready (already is)
+        animateProjectTitles();
+      })();
+    </script>
+  </body>
+</html>
